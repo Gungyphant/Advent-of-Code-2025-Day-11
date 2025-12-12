@@ -1,6 +1,6 @@
 ﻿using System.Xml;
 
-namespace AOC2025Day12
+namespace AOC2025Day11
 {
     public class Program
     {
@@ -69,13 +69,16 @@ namespace AOC2025Day12
                         else
                         {
                             List<string> newPath = path.Append(nextPlace).ToList();
-                            newPaths.Add(newPath);
+                            newPaths.Add(newPath); // Too memory intensive for laptop
                         }
                     }
                 }
                 paths = new List<List<string>>(newPaths);
             }
             return Convert.ToString(finishedPaths);
+            // The number of paths from svr to out via fft and dac =
+            //    (number from svr to dac via fft) * (number from dac to out)
+            //  + (number from svc to dac not via fft) * (number from dac to out via fft)
         }
         static void Main()
         {
